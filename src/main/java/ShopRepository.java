@@ -12,6 +12,9 @@ public class ShopRepository {
     private Product[] addToArray(Product[] current, Product product) {
         Product[] tmp = new Product[current.length + 1];
         for (int i = 0; i < current.length; i++) {
+//            if (product.getId() == products[int id]){
+//                throw new AlreadyExistsException(id);
+//            }
             tmp[i] = current[i];
         }
         tmp[tmp.length - 1] = product;
