@@ -1,6 +1,6 @@
-public class NotFoundException {
+public class NotFoundException extends RuntimeException {
 
-    public NotFoundException (String s){
-        super(s);
+    public NotFoundException(int id) {
+        super("Нет продукта с таким ID: " + id + ".");
     }
 }

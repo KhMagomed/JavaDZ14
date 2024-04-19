@@ -1,7 +1,21 @@
+import java.util.Objects;
+
 public class Product {
     protected int id;
     protected String title;
     protected int price;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 
     public Product(int id, String title, int price) {
         this.id = id;
@@ -22,6 +36,7 @@ public class Product {
     public int hashCode() {
         return Objects.hash(id, title, price);
     }
+
 
     // геттеры + сеттеры
     // на id только геттер — пусть будет неизменяемым для товара
