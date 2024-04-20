@@ -1,33 +1,24 @@
 public class ShopRepository {
     private Product[] products = new Product[0];
 
-    /**
-     * Вспомогательный метод для имитации добавления элемента в массив
-     *
-     * @param current — массив, в который мы хотим добавить элемент
-     * @param product — элемент, который мы хотим добавить
-     * @return — возвращает новый массив, который выглядит, как тот, что мы передали,
-     * но с добавлением нового элемента в конец
-     */
-    private Product[] addToArray(Product[] current, Product product) {
-        Product[] tmp = new Product[current.length + 1];
-        for (int i = 0; i < current.length; i++) {
-//            if (product.getId() == products[int id]){
-//                throw new AlreadyExistsException(id);
-//            }
-            tmp[i] = current[i];
+    private Product[] addToArray(Product product) {
+        int id = product.getId();
+        Product product1 = findById(id);
+        if (product1 != null) {
+            throw new AlreadyExistsException(id);
+        }
+
+        Product[] tmp = new Product[products.length + 1];
+        for (int i = 0; i < products.length; i++) {
+            tmp[i] = products[i];
         }
         tmp[tmp.length - 1] = product;
         return tmp;
     }
 
-    /**
-     * Метод добавления товара в репозиторий
-     *
-     * @param product — добавляемый товар
-     */
+
     public void add(Product product) {
-        products = addToArray(products, product);
+        products = addToArray(product);
     }
 
     public Product[] findAll() {
